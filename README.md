@@ -13,7 +13,7 @@ The MetaMask Delegation Demo is a web application that allows users to:
 
 This project showcases how delegation can be used to grant specific permissions to other addresses without giving full wallet access.
 
-## How to Run
+## Getting Started
 
 ### Prerequisites
 
@@ -24,24 +24,24 @@ This project showcases how delegation can be used to grant specific permissions 
 ### Installation
 
 1. Clone the repository:
-   \`\`\`bash
+   ```bash
    git clone https://github.com/furidngrt/MetaMask-Delegation-Demo.git
    cd metamask-delegation-demo
-   \`\`\`
+   ```
 
 2. Install dependencies:
-   \`\`\`bash
+   ```bash
    npm install
    # or
    yarn
-   \`\`\`
+   ```
 
 3. Start the development server:
-   \`\`\`bash
+   ```bash
    npm run dev
    # or
    yarn dev
-   \`\`\`
+   ```
 
 4. Open your browser and navigate to `http://localhost:3000`
 
@@ -51,7 +51,7 @@ This project showcases how delegation can be used to grant specific permissions 
 
 The project uses the ERC-7715 API to create delegations. This is implemented in the `createDelegation` function in `lib/delegation.ts`:
 
-\`\`\`typescript
+```typescript
 export async function createDelegation(
   delegator: string,
   delegatee: string,
@@ -79,7 +79,7 @@ export async function createDelegation(
     throw error;
   }
 }
-\`\`\`
+```
 
 When a user creates a delegation, they:
 1. Specify a delegatee address (the address receiving the delegation)
@@ -92,7 +92,7 @@ The delegation is then stored and a delegation ID is returned.
 
 The project uses the ERC-7710 API to verify delegations. This is implemented in the `verifyDelegation` function in `lib/delegation.ts`:
 
-\`\`\`typescript
+```typescript
 export async function verifyDelegation(
   delegationId: string,
   signer: ethers.JsonRpcSigner | null
@@ -106,7 +106,7 @@ export async function verifyDelegation(
     throw error;
   }
 }
-\`\`\`
+```
 
 When a user verifies a delegation, they:
 1. Enter a delegation ID
@@ -118,14 +118,14 @@ When a user verifies a delegation, they:
 For this demo, we've created a simplified mock implementation of the MetaMask Delegation Toolkit to demonstrate the concepts. In a production environment, you would:
 
 1. Install the actual MetaMask Delegation Toolkit:
-   \`\`\`bash
+   ```bash
    npm install @metamask/delegation-toolkit
-   \`\`\`
+   ```
 
 2. Import and use the actual implementation:
-   \`\`\`typescript
+   ```typescript
    import { DelegationRegistry } from "@metamask/delegation-toolkit"
-   \`\`\`
+   ```
 
 The mock implementation in this demo follows the same API structure as the actual toolkit, so the code can be easily updated once the experimental APIs are publicly available.
 
@@ -133,7 +133,7 @@ The mock implementation in this demo follows the same API structure as the actua
 
 This project uses ethers.js to connect to MetaMask:
 
-\`\`\`typescript
+```typescript
 // Create ethers provider
 const ethersProvider = new ethers.BrowserProvider(window.ethereum);
 setProvider(ethersProvider);
@@ -141,7 +141,7 @@ setProvider(ethersProvider);
 // Get signer
 const ethersSigner = await ethersProvider.getSigner();
 setSigner(ethersSigner);
-\`\`\`
+```
 
 ## Project Structure
 
